@@ -30,7 +30,7 @@ const useFetchData = (endpoint) => {
     fetchData();
   }, [fetchData]);
 
-  return { data, loading, error, refetch: fetchData }; // refetch function return kar raha hai
+  return { data, loading, error, refetch: fetchData }; 
 };
 
 export default useFetchData;

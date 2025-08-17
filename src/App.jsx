@@ -13,14 +13,22 @@ import Home from "./Pages/Home/Home";
 import Aside from "./Pages/Home/Aside";
 import Header from "./Pages/Home/Header";
 import Profile from "./Pages/Settings/Profile";
-import GenralSetting from "./Pages/Settings/GenralSetting";
 import Login from "./Components/Authentication/Login";
 import ForgotPassword from "./Components/Authentication/ForgotPassword";
 import Websetting from "./Pages/Settings/Websetting";
 import ResetPassword from "./Components/Authentication/ResetPassword";
-import AddBlog from "./Pages/Blogs/AddBlog";
-import ListBlog from "./Pages/Blogs/ListBlog";
-
+import List from "./Pages/Finance/List";
+import AddFinanceDocument from "./Pages/Finance/AddFinanceDocument";
+import AddCorporateDocument from "./Pages/Corporates/AddCorporateDocument";
+import ListCorporatedocs from "./Pages/Corporates/ListCorporatedocs";
+import AddShareholder from "./Pages/Shareholder/AddShareholder";
+import ShareHolderdocs from "./Pages/Shareholder/ShareHolderdocs";
+import AddBanner from "./Pages/Banner/Addbanner";
+import BannerList from "./Pages/Banner/BannerList";
+import AddTeamMember from "./Pages/Teammember/AddTeamMember";
+import TeamList from "./Pages/Teammember/TeamList";
+import AddProduct from "./Pages/Product/AddProduct";
+import ProductList from "./Pages/Product/ProductList";
 
 function Layout() {
   const location = useLocation();
@@ -51,15 +59,33 @@ function Layout() {
         {!isLoginPage && <Header toggleSideMenu={toggleSideMenu} />}
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<GenralSetting />} />
-          <Route path="/site-settings" element={<Websetting />} />
+          <Route path="/settings" element={<Websetting />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/forgot" element={<ForgotPassword />} />
           <Route path="/Reset-password" element={<ResetPassword />} />
-          <Route path="/Add-blog" element={<AddBlog />} />
-          <Route path="/Blog-list" element={<ListBlog />} />
+          <Route path="/financials/Add" element={<AddFinanceDocument />} />
+          <Route path="/financials/Documents" element={<List />} />
+          <Route path="/finance/edit/:id" element={<AddFinanceDocument />} />
+          <Route path="/governance/Add" element={<AddCorporateDocument />} />
+          <Route path="/governance/Documents" element={<ListCorporatedocs />} />
+          <Route
+            path="/governance/edit/:id"
+            element={<AddCorporateDocument />}
+          />
+          <Route path="/shareholders/Add" element={<AddShareholder />} />
+          <Route path="/shareholders/Documents" element={<ShareHolderdocs />} />
+          <Route path="/shareholders/edit/:id" element={<AddShareholder />} />
+          <Route path="/addbanner" element={<AddBanner />} />
+          <Route path="/banners" element={<BannerList />} />
+          <Route path="/banner/edit/:id" element={<AddBanner />} />
+          <Route path="/add-member" element={<AddTeamMember />} />
+          <Route path="/team-members" element={<TeamList />} />
+          <Route path="/team/edit/:id" element={<AddTeamMember />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/edit-product/:id" element={<AddProduct />} />
         </Routes>
       </div>
     </>

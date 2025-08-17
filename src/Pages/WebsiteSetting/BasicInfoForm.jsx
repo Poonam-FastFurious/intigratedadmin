@@ -138,7 +138,8 @@ function BasicInfoForm() {
             type="file"
             name="favicon"
             accept="image/*"
-            onChange={handleFileChange} className=" p-4"
+            onChange={handleFileChange}
+            className=" p-4"
           />
           {previewFavicon && (
             <img src={previewFavicon} alt="Favicon" className="h-10 mt-2" />

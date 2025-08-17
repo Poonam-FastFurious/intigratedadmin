@@ -5,12 +5,8 @@ import { Baseurl } from "../Config";
 
 const useProductStore = create((set) => ({
   loading: false,
-  categories: [],
+
   websiteSettings: null,
-  products: [],
-  totalProducts: 0,
-  editCategory: null,
-  singleProduct: null,
 
   fetchWebsiteSettings: async () => {
     try {
@@ -62,8 +58,6 @@ const useProductStore = create((set) => ({
       return null;
     }
   },
-
-  
 }));
 
 export default useProductStore;

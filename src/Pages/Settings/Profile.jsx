@@ -66,7 +66,7 @@ function Profile() {
             <div
               style={{
                 backgroundImage:
-                  "url(https://html.hixstudio.net/ebazer/assets/img/bg/profile-header.jpg)",
+                  "url(https://html.aqlova.com/ebazer/assets/img/bg/profile-header.jpg)",
               }}
               className="data-bg absolute top-0 left-0 w-full h-full bg-no-repeat bg-cover"
             ></div>
@@ -210,28 +210,6 @@ function Profile() {
               </div>
             </div>
             <div className="col-span-12 2xl:col-span-4">
-              <div className="py-10 px-10 bg-white rounded-md mb-6 ">
-                <h5 className="text-xl mb-6">Notification</h5>
-
-                <div className="space-y-3 flex flex-col">
-                  <div className="tp-checkbox flex items-center mb-3 sm:mb-0">
-                    <input id="follows" type="checkbox" />
-                    <label htmlFor="follows">
-                      Like & Follows Notifications
-                    </label>
-                  </div>
-                  <div className="tp-checkbox flex items-center mb-3 sm:mb-0">
-                    <input id="comments" type="checkbox" />
-                    <label htmlFor="comments">
-                      Post, Comments & Replies Notifications
-                    </label>
-                  </div>
-                  <div className="tp-checkbox flex items-center mb-3 sm:mb-0">
-                    <input id="order" type="checkbox" />
-                    <label htmlFor="order">New Order Notifications</label>
-                  </div>
-                </div>
-              </div>
               <ChangePassword />
             </div>
           </div>

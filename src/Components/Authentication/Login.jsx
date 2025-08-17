@@ -62,7 +62,7 @@ function Login() {
                   className="data-bg absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat"
                   style={{
                     backgroundImage:
-                      "url(https://html.hixstudio.net/ebazer/assets/img/bg/login-bg.jpg)",
+                      "url(https://html.aqlova.com/ebazer/assets/img/bg/login-bg.jpg)",
                   }}
                 ></div>
               </div>

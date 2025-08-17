@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 import useAdminStore from "../../Store/useAdminStore";
@@ -9,10 +8,9 @@ const stateCityData = {
 };
 function GenralSetting() {
   const [updateTrigger, setUpdateTrigger] = useState(false);
-  const { updateAdmin, getAdminDetails ,adminDetails} = useAdminStore();
+  const { updateAdmin, getAdminDetails, adminDetails } = useAdminStore();
   const adminId = localStorage.getItem("adminId");
 
-  
   const [formData, setFormData] = useState({
     adminId: adminId,
     state: "",
@@ -22,7 +20,6 @@ function GenralSetting() {
     website: "",
   });
 
- 
   useEffect(() => {
     setFormData((prev) => ({ ...prev, city: "" }));
   }, [formData.state]);

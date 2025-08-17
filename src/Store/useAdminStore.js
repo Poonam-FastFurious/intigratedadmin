@@ -102,32 +102,6 @@ const useAdminStore = create((set) => ({
       return false;
     }
   },
-  getDashboardHeaderData: async (userId) => {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      if (!accessToken) {
-        toast.error("Unauthorized: No access token found");
-        return null;
-      }
-
-      const res = await axios.get(`${Baseurl}dashboard/dashboard-header?userId=${userId}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-
-      if (res.data && res.data.success) {
-        set({ dashboardHeaderData: res.data.data }); // ✅ Store data in Zustand state
-        return res.data.data;
-      } else {
-        throw new Error(res.data.message || "Failed to fetch dashboard data");
-      }
-    } catch (error) {
-      toast.error("Failed to fetch dashboard data");
-      console.error("Error fetching dashboard data:", error);
-      return null;
-    }
-  },
 
   logout: async () => {
     const { isConfirmed } = await Swal.fire({

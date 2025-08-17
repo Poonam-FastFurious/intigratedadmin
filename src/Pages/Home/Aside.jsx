@@ -1,37 +1,105 @@
 /* eslint-disable react/prop-types */
-import { Blocks, ChevronRight, Grid2x2 } from "lucide-react";
+import {
+  Building,
+  ChevronRight,
+  Grid2x2,
+  Image,
+  IndianRupee,
+  Settings,
+  Share,
+  User,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/img/logo/kafal logo.png";
+
 function Aside({ sideMenu, setSideMenu }) {
   const [isMobile, setIsMobile] = useState(false);
   const [nav, setNav] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+      setIsMobile(window.innerWidth <= 768);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const menuItems = [
-    { id: 0, label: "Dashboard", icon: <Grid2x2 size={18} />, link: "/" },
+    {
+      id: 0,
+      label: "Dashboard",
+      icon: <Grid2x2 size={18} />,
+      link: "/",
+    },
+    {
+      id: 1,
+      label: "Financials",
+      icon: <IndianRupee size={18} />,
+      subMenu: [
+        { label: "Add", link: "/financials/Add" },
+        { label: "Documents", link: "/financials/Documents" },
+      ],
+    },
+    {
+      id: 2,
+      label: "Corporate ",
+      icon: <Building size={18} />,
+      subMenu: [
+        { label: "Add", link: "/governance/Add" },
+        { label: "Documents", link: "/governance/Documents" },
+      ],
+    },
+    {
+      id: 3,
+      label: "Shareholders ",
+      icon: <Share size={18} />,
+      subMenu: [
+        { label: "Add", link: "/shareholders/Add" },
+        { label: "Documents", link: "/shareholders/Documents" },
+      ],
+    },
+    {
+      id: 4,
+      label: "Banners",
+      icon: <Image size={18} />,
+      subMenu: [
+        { label: "Add", link: "/addbanner" },
+        { label: "Banners", link: "/banners" },
+      ],
+    },
+    {
+      id: 5,
+      label: "Teammembers",
+      icon: <User size={18} />,
+      subMenu: [
+        { label: "Add", link: "/add-member" },
+        { label: "team-members", link: "/team-members" },
+      ],
+    },
+    {
+      id: 6,
+      label: "Products",
+      icon: <Image size={18} />, // you can choose another icon if preferred
+      subMenu: [
+        { label: "Add", link: "/add-product" },
+        { label: "Products", link: "/products" },
+      ],
+    },
+    {
+      id: 7,
+      label: "Website Settings",
+      icon: <Settings size={18} />,
+      link: "/settings",
+    },
   ];
+
   return (
     <>
       <div className="tp-main-wrapper bg-slate-100 ">
         <aside
-          className={`w-[300px] lg:w-[250px] xl:w-[300px] border-r border-gray  sidebar-scrollbar fixed left-0 top-0 h-full bg-white z-50 transition-transform duration-300 ${
+          className={`w-[300px] lg:w-[250px] xl:w-[300px] border-r border-gray sidebar-scrollbar fixed left-0 top-0 h-full bg-white z-50 transition-transform duration-300 ${
             sideMenu && isMobile
               ? "translate-x-0"
               : !isMobile
@@ -39,11 +107,18 @@ function Aside({ sideMenu, setSideMenu }) {
               : "-translate-x-[300px]"
           }`}
         >
-          <div className="py-4 pb-8 px-8 border-b border-gray h-[90px]  bg-gray-600">
+          <div className="py-4 pb-8 px-8 border-b border-gray h-[90px] ">
             <Link to="/">
-              <img className="w-[140px]  " src={logo} alt="Logo" />
+              <img
+                className=""
+                src={
+                  "https://i0.wp.com/integratedindustries.in/wp-content/uploads/2023/03/logo2.png?fit=822%2C267&ssl=1"
+                }
+                alt="Logo"
+              />
             </Link>
           </div>
+
           <div className="px-4 py-5">
             <ul>
               {menuItems.map(({ id, label, icon, link, subMenu }) => (
@@ -56,7 +131,7 @@ function Aside({ sideMenu, setSideMenu }) {
                     to={link || "#"}
                   >
                     <span className="inline-block mr-[10px] text-xl">
-                      <span className="mr-2">{icon}</span>
+                      {icon}
                     </span>
                     {label}
                     {subMenu && (
@@ -69,6 +144,7 @@ function Aside({ sideMenu, setSideMenu }) {
                       </span>
                     )}
                   </Link>
+
                   {nav === id && subMenu && (
                     <ul className="pl-[42px] pr-[20px] pb-3">
                       {subMenu.map(({ label, link }) => (
@@ -86,53 +162,10 @@ function Aside({ sideMenu, setSideMenu }) {
                 </li>
               ))}
             </ul>
-
-            <div>
-              <Link
-                onClick={() => setNav(nav !== 9 ? 9 : null)}
-                className={`group rounded-md relative text-black text-lg font-medium inline-flex items-center w-full transition-colors ease-in-out duration-300 px-5 py-[9px] mb-3 hover:bg-gray sidebar-link-active ${
-                  nav === 9
-                    ? "bg-themeLight hover:bg-themeLight text-theme"
-                    : ""
-                }`}
-                to="#"
-              >
-                <span className="inline-block translate-y-[1px] mr-[10px] text-xl">
-                  <Blocks />
-                </span>
-                Blogs
-                <span
-                  className={`absolute right-4 transition-transform duration-300 origin-center w-4 h-4 ${
-                    nav === 9 ? "rotate-90" : ""
-                  }`}
-                >
-                  <ChevronRight size={18} />
-                </span>
-              </Link>
-              {nav === 9 && (
-                <ul className="pl-[42px] pr-[20px] pb-3">
-                  <li>
-                    <Link
-                      to="/Blog-list"
-                      className="block font-normal w-full text-[#6D6F71] hover:text-theme nav-dot"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/Add-blog"
-                      className="block font-normal w-full text-[#6D6F71] hover:text-theme nav-dot"
-                    >
-                      Add Blog
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </div>
           </div>
         </aside>
       </div>
+
       {isMobile && (
         <div
           className={`fixed top-0 left-0 w-full h-full z-40 bg-black/70 transition-all duration-300 ${
